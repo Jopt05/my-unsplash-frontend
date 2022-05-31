@@ -1,0 +1,31 @@
+.Body {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: row;
+    grid-auto-rows: 250px;
+    gap: 10px;
+}
+
+.Small {
+    height: 250px;
+}
+
+.Medium {
+    height: 350px;
+}
+
+.Huge {
+    height: 450px;
+}
+
+.Image_Container {
+    position: relative;
+    width: 100%;
+}
+
+.Image_Container img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
