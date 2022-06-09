@@ -1,24 +1,3 @@
-/* .Body {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: masonry;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.Image_Container {
-    position: relative;
-    height: min-content;
-    width: 100%;
-}
-
-.Image_Container img {
-    border-radius: 12px;
-    object-fit: cover;
-    width: 100%;
-} */
-
 .Body {
     column-count: 3;
     column-gap: 25px;
