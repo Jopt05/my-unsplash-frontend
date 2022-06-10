@@ -1,0 +1,77 @@
+.Popup {
+    position: absolute;
+    width: 450px;
+    padding: 15px 20px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+.Title {
+    font-size: 24px;
+    color: #333333;
+    margin-bottom: 15px;
+}
+
+.InputContainer input,
+.InputContainer label {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.InputContainer label {
+    font-size: 14px;
+    color: #4F4F4F;
+}
+
+.InputContainer input {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 12px;
+    border: 1px solid #4F4F4F;
+}
+
+.ButtonContainer {
+    display: flex;
+    gap: 15px;
+    justify-content: end;
+}
+
+.Popup button {
+    border: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.Cancel {
+    background-color: transparent;
+    color: #BDBDBD;
+}
+
+.Cancel:hover {
+    color: #aaa2a2;
+}
+
+.Green {
+    background-color: green;
+    color: white;
+}
+
+.Green:hover {
+    background-color: rgb(7, 102, 7);
+}
+
+.Red {
+    background-color: red;
+    color: white;
+}
+
+.Red:hover {
+    background-color: rgb(231, 10, 10);
+}
