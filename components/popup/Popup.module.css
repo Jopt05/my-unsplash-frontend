@@ -90,3 +90,10 @@
 .Red:hover {
     background-color: rgb(231, 10, 10);
 }
+
+.ErrorMessage {
+    color: red;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+}

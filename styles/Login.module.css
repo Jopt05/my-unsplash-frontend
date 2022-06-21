@@ -1,0 +1,39 @@
+.container {
+    padding: 20px 10%;
+}
+
+.Form {
+    background-color: white;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px 25px;
+    border-radius: 12px;
+    width: 450px;
+}
+
+.Form h1 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.Form input,
+.Form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.Form input {
+    padding: 10px 15px;
+    width: 100%;
+    border: 1px solid grey
+}
+
+  
+@media only screen and (max-width: 500px) {
+    .container {
+        padding: 20px 5%;
+    }
+}

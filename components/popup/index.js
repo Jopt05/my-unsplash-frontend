@@ -11,6 +11,8 @@ export default function Popup(props) {
         url: '',
     })
 
+    const [message, setMessage] = useState('');
+
     function handleCancel(e) {
         e.preventDefault();
         data.setUsePopup(false);
@@ -43,11 +45,17 @@ export default function Popup(props) {
             .then(response => response.json())
             .then(response => response)
             .catch(err => err)
-
-        console.log(response)
-        if (response.msg.includes('correct')) return;
+        if (response.msg.includes('correct')) {
+            setMessage(response.msg)
+            return
+        };
 
         data.setUsePopup(false);
+        setMessage('')
+        setForm({
+            ...Form,
+            password: ''
+        })
     }
 
     async function handleAdd(e) {
@@ -77,9 +85,18 @@ export default function Popup(props) {
             .catch(err => err)
 
         console.log(response)
-        if (!response.uploaded_on) return;
+        if (!response.uploaded_on) {
+            setMessage('There was a problem')
+            return
+        };
 
         data.setUsePopup(false);
+        setMessage('')
+        setForm({
+            ...Form,
+            url: '',
+            label: '',
+        })
     }
 
     return (
@@ -127,6 +144,13 @@ export default function Popup(props) {
                                 />
                             </>
                     )
+                }
+                {
+                    <p
+                        className={styles.ErrorMessage}
+                    >
+                        { message != '' && message}
+                    </p>
                 }
             </div>
             <div className={styles.ButtonContainer}>
