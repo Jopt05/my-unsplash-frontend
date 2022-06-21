@@ -1,6 +1,7 @@
 .Body {
     column-count: 3;
     column-gap: 25px;
+    z-index: 1000;
 }
 
 .Image_Container img {

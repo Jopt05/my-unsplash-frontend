@@ -4,8 +4,13 @@ import Body from '../components/body'
 import Header from '../components/header'
 import Popup from '../components/popup'
 import styles from '../styles/Home.module.css'
+import { useState } from 'react'
 
 export default function Home() {
+
+  const [usePopup, setUsePopup] = useState(false);
+  const [popUpAction, setpopUpAction] = useState('none');
+
   return (
     <div className={styles.container}>
       <Head>
@@ -14,9 +19,22 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <div className={`${styles.Curtain} ${usePopup ? styles.Curtain_on : ''}`}>
+      </div>
       <Header />
-      <Body />
-      <Popup />
+      <Body 
+        data={{
+          setUsePopup,
+          setpopUpAction
+        }}
+      />
+      <Popup 
+        data={{
+          usePopup,
+          setUsePopup,
+          popUpAction
+        }}
+      />
     </div>
   )
 }

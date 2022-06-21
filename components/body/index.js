@@ -1,6 +1,15 @@
 import styles from './Body.module.css'
 
 export default function Body(props) {
+
+    const { data } = props;
+
+    function handleDelete(e) {
+        e.preventDefault();
+        data.setUsePopup(true);
+        data.setpopUpAction('d');
+    }
+
     const images = [
         {
             url: "https://compass-ssl.xbox.com/assets/9c/94/9c944d9c-7ef1-4b46-9f68-9b02966d3993.jpg?n=Halo-Infinite_GLP-Page-Hero-0_1083x609.jpg",
@@ -34,25 +43,15 @@ export default function Body(props) {
 
     return (
         <main className={styles.Body}>
-            {/* <div className={`${styles.Image_Container}`}>
-                <div className={styles.Overlay}>
-                </div>
-                <button className={styles.Delete_Button}>
-                    Delete
-                </button>
-                <img src='https://www.gettyimages.com.mx/gi-resources/images/500px/983703508.jpg' />
-                <div className={styles.Image_Desc}>
-                    <p>
-                        Morbi consequat lorem ipsuma ada dasdasdasdasdasdadas
-                    </p>
-                </div>
-            </div> */}
             {
                 images.map((item,index) => (
                     <div className={`${styles.Image_Container}`}>
                         <div className={styles.Overlay}>
                         </div>
-                        <button className={styles.Delete_Button}>
+                        <button 
+                            className={styles.Delete_Button}
+                            onClick={handleDelete}
+                            >
                             Delete
                         </button>
                         <img src={item.url} />
