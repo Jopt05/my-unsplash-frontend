@@ -3,7 +3,8 @@
 }
 
 .Curtain {
-  position: absolute;
+  position: fixed;
+  cursor: pointer;
   width: 100%;
   left: 0;
   top: 0;

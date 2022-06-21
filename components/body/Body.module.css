@@ -4,6 +4,12 @@
     z-index: 1000;
 }
 
+@media only screen and (max-width: 768px) {
+    .Body {
+        column-count: 1;
+    }
+}
+
 .Image_Container img {
     width: 100%;
     display: block;
