@@ -1,12 +1,14 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import Body from '../components/body'
 import Header from '../components/header'
 import Popup from '../components/popup'
 import styles from '../styles/Home.module.css'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import AppContext from '../components/appcontext'
+import Router from 'next/router'
 
 export default function Home() {
+  const { userData, setUserData } = useContext(AppContext);
 
   const [usePopup, setUsePopup] = useState(false);
   const [popUpAction, setpopUpAction] = useState('none');
@@ -14,19 +16,37 @@ export default function Home() {
   const [idImage, setidImage] = useState([]);
 
   useEffect(() => {
+    if (userData.username && userData.username != '') return;
+
+    const ls = localStorage.getItem('cr');
+    const _userData = JSON.parse(ls);
+    
+    if (!_userData || _userData.username) {
+      Router.replace('/');
+    };
+
+    setUserData(_userData)
+  }, [])
+
+  useEffect(() => {
+    if ( !userData ) {
+      Router.replace('/login');
+      return
+    }
     fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}api/images/1`, {
+      `${process.env.NEXT_PUBLIC_API_URL}api/images/${userData.id}`, {
         headers: {
-          "Authorization": "Token cd1377077027a14b56130e0daf2e486b65f1486f"
+          "Authorization": `Token ${userData.token}`
         }
       }
     )
       .then(response => response.json())
       .then(response => {
+        console.log(response)
         setImages(response)
       })
       .catch(err => err)
-  }, [usePopup])
+  }, [usePopup, userData])
 
   return (
     <div className={styles.container}>
@@ -44,7 +64,8 @@ export default function Home() {
       <Header 
         data={{
           setUsePopup,
-          setpopUpAction
+          setpopUpAction,
+          userData
         }}
       />
       <Body 

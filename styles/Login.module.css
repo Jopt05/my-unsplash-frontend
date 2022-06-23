@@ -31,9 +31,50 @@
     border: 1px solid grey
 }
 
+.Form input:focus {
+    outline: none;
+}
+
+.Form button {
+    border: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    background-color: #3DB46D;
+    color: white;
+    margin-left: auto;
+}
+
+.BContainer {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.Register_button {
+    color: rgb(216, 169, 169);
+    cursor: pointer;
+    font-size: 14px;
+    justify-self: flex-start;
+}
+
+.Register_button:hover {
+    text-decoration: underline;
+}
+
+.Form button:hover {
+    background-color: #329258;
+}
   
 @media only screen and (max-width: 500px) {
     .container {
         padding: 20px 5%;
+    }
+
+    .Form {
+        width: 95%;
+        padding: 20px 25px;
     }
 }

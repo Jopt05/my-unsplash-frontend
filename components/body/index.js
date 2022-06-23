@@ -14,7 +14,10 @@ export default function Body(props) {
         <main className={styles.Body}>
             {
                 data.images.length > 0 && data.images.map((item,index) => (
-                    <div className={`${styles.Image_Container}`}>
+                    <div
+                        className={`${styles.Image_Container}`}
+                        key={index}
+                    >
                         <div className={styles.Overlay}>
                         </div>
                         <button 

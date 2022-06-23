@@ -18,7 +18,7 @@ export default function Header(props) {
                 </div>
                 <div>
                     <h1>My Unsplash</h1>
-                    <p>jopt98@gmail.com</p>
+                    <p>{data.userData && data.userData.username}</p>
                 </div>
             </div>
 
