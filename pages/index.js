@@ -81,7 +81,8 @@ export default function Home() {
           usePopup,
           setUsePopup,
           popUpAction,
-          idImage
+          idImage,
+          userData
         }}
       />
     </div>

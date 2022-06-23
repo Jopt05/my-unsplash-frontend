@@ -37,7 +37,7 @@ export default function Popup(props) {
                     password: Form.password
                 }),
                 headers: {
-                    "Authorization": 'Token cd1377077027a14b56130e0daf2e486b65f1486f',
+                    "Authorization": `Token ${data.userData.token}`,
                     "Content-Type": "application/json"
                 }
             }
@@ -75,7 +75,7 @@ export default function Popup(props) {
                     author: "1"
                 }),
                 headers: {
-                    "Authorization": 'Token cd1377077027a14b56130e0daf2e486b65f1486f',
+                    "Authorization": `Token ${data.userData.token}`,
                     "Content-Type": "application/json"
                 }
             }
