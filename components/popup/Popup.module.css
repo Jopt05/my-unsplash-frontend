@@ -44,9 +44,13 @@
 
 .InputContainer input {
     width: 100%;
-    padding: 10px 15px;
-    border-radius: 12px;
+    padding: 15px 15px;
+    border-radius: 8px;
     border: 1px solid #4F4F4F;
+}
+
+.InputContainer input:focus {
+    outline: none;
 }
 
 .ButtonContainer {
