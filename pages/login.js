@@ -9,7 +9,7 @@ export default function Login() {
 
     const [action, setAction] = useState('l');
 
-    const [ErrorText, setErrorText] = useState('All good!');
+    const [ErrorText, setErrorText] = useState('');
 
     const [Form, setForm] = useState({
         name: '',
@@ -43,7 +43,7 @@ export default function Login() {
             return false;
         }
 
-        setErrorText('All good!')
+        setErrorText('')
 
         return true;
     }
@@ -72,7 +72,6 @@ export default function Login() {
         )
             .then(response => response.json())
             .then((r) => {
-                console.log(r);
                 return r;
             })
             .catch(err => err)
@@ -180,7 +179,7 @@ export default function Login() {
                     )
                 }
                 <p
-                    className={`${styles.ErrorText} ${ ErrorText != 'All good!' ? styles.Show : '' }`}
+                    className={`${styles.ErrorText} ${ ErrorText != '' ? styles.Show : '' }`}
                 >
                     { ErrorText }
                 </p>

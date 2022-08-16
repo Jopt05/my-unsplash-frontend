@@ -23,7 +23,7 @@ export default function Header(props) {
             </div>
 
             <div className={styles.Input_Container}>
-                <i>A</i>
+                <i class='bx bx-search-alt-2'></i>
                 <input
                     type='text'
                 />
