@@ -9,6 +9,8 @@ export default function Login() {
 
     const [action, setAction] = useState('l');
 
+    const [ErrorText, setErrorText] = useState('All good!');
+
     const [Form, setForm] = useState({
         name: '',
         email: '',
@@ -24,8 +26,38 @@ export default function Login() {
         })
     }
 
+    function checkEmptyFields(fields = []) {
+        let emptyFields = []
+        fields.forEach((field) => Form[field] == '' ? emptyFields.push(field) : '');
+
+        if( emptyFields.length > 0 ) {
+            setErrorText(`The ${emptyFields[0]} field is empty`);
+            return false;
+        };
+
+        if(
+            fields.includes('password2') &&
+            Form['password2'] != Form['password']
+        ) {
+            setErrorText(`Passwords don't match`);
+            return false;
+        }
+
+        setErrorText('All good!')
+
+        return true;
+    }
+
+    function handleRequestError(response) {
+        let errorString = response.non_field_errors[0];
+        setErrorText(errorString);
+        return errorString;
+    }
+
     async function handleLogin(e) {
         e.preventDefault();
+        const hasError = checkEmptyFields(['email', 'password'])
+        if( !hasError ) return;
         const response = await fetch(
             `${process.env.NEXT_PUBLIC_API_URL}api/login/`, {
                 method: 'POST',
@@ -39,10 +71,16 @@ export default function Login() {
             }
         )
             .then(response => response.json())
-            .then(response => response)
+            .then((r) => {
+                console.log(r);
+                return r;
+            })
             .catch(err => err)
         
-        if (response.non_field_errors) return;
+        if (response.non_field_errors) {
+            const error = handleRequestError(response);
+            return error;
+        };
 
         const userData = {
             username: response.user,
@@ -61,6 +99,8 @@ export default function Login() {
 
     async function handleRegister(e) {
         e.preventDefault();
+        const hasError = checkEmptyFields(['name', 'email', 'password', 'password2'])
+        if( !hasError ) return;
         const response = await fetch(
             `${process.env.NEXT_PUBLIC_API_URL}api/users/`, {
                 method: 'POST',
@@ -79,7 +119,10 @@ export default function Login() {
             .then(response => response)
             .catch(err => err)
         
-        if (response.non_field_errors) return;
+        if (response.non_field_errors) {
+            const error = handleRequestError(response);
+            return error;
+        };
 
         setAction('l')
     }
@@ -136,6 +179,11 @@ export default function Login() {
                         </>
                     )
                 }
+                <p
+                    className={`${styles.ErrorText} ${ ErrorText != 'All good!' ? styles.Show : '' }`}
+                >
+                    { ErrorText }
+                </p>
                 <div className={styles.BContainer}>
                     {
                         action == 'l' && ( 

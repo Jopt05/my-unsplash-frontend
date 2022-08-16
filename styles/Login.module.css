@@ -26,9 +26,10 @@
 }
 
 .Form input {
-    padding: 10px 15px;
+    padding: 15px 15px;
     width: 100%;
-    border: 1px solid grey
+    border: 1px solid grey;
+    border-radius: 8px;
 }
 
 .Form input:focus {
@@ -45,6 +46,19 @@
     background-color: #3DB46D;
     color: white;
     margin-left: auto;
+}
+
+.Form .ErrorText {
+    text-align: center;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+    color: red;
+    margin: 10px 0px;
+}
+
+.Form .ErrorText.Show {
+    opacity: 1;
 }
 
 .BContainer {
