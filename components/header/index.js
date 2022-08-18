@@ -1,15 +1,28 @@
 import styles from './Header.module.css'
 import { useContext } from 'react';
 import AppContext from '../appcontext';
+import Router from 'next/router'
 
 export default function Header(props) {
-    const { filter, setFilter } = useContext(AppContext)
+    const { filter, setFilter, setUserData } = useContext(AppContext)
 
     const { data } = props;
 
     function handleAddPhoto(e) {
         data.setpopUpAction('a');
         data.setUsePopup(true);
+    }
+
+    function handleLogOut(e) {
+        localStorage.removeItem('cr');
+
+        setUserData({
+            token: '',
+            id: '',
+            username: ''
+        })
+
+        Router.replace('/login');
     }
 
     return (
@@ -23,8 +36,11 @@ export default function Header(props) {
                     <h1>My Unsplash</h1>
                     <p>{data.userData && data.userData.username}</p>
                 </div>
-                <div>
-                    <i class='bx bx-exit'></i>
+                <div className={styles.Exit_Container}>
+                    <i
+                        className='bx bx-exit'
+                        onClick={handleLogOut}
+                    ></i>
                 </div>
             </div>
 

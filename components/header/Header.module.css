@@ -47,6 +47,22 @@
     font-size: 12px;
 }
 
+.Exit_Container {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.Exit_Container i {
+    font-size: 25px;
+    transition: color .2s ease-in-out;
+}
+
+.Exit_Container i:hover {
+    color: #BDBDBD;
+}
+
 .Input_Container {
     display: flex;
     align-items: center;
