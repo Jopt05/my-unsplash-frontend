@@ -73,6 +73,13 @@ export default function Popup(props) {
             return;
         };
 
+        if (
+            !Form.url.match(/(https?:\/\/.*\.(?:png|jpg|jpeg))/i)
+        ) {
+            setMessage('Thats not a valid url')
+            return
+        }
+
         const response = await fetch(
             `${process.env.NEXT_PUBLIC_API_URL}api/images/post/`, {
                 method: 'POST',
