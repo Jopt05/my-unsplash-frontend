@@ -47,7 +47,7 @@ export default function Body(props) {
                             </div>
                         </div>
                     ))
-                    : <h1>No hay imágenes para mostrar</h1>
+                    : <h1>No images to be shown</h1>
             }
         </main>
     )
