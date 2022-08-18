@@ -23,6 +23,9 @@ export default function Header(props) {
                     <h1>My Unsplash</h1>
                     <p>{data.userData && data.userData.username}</p>
                 </div>
+                <div>
+                    <i class='bx bx-exit'></i>
+                </div>
             </div>
 
             <div className={styles.Input_Container}>
