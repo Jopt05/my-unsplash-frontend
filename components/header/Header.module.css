@@ -1,5 +1,4 @@
 .Header {
-    /* background-color: red; */
     height: fit-content;
     display: flex;
     margin-bottom: 100px;
@@ -8,7 +7,6 @@
 .Logo_Container {
     display: flex;
     width: fit-content;
-    /* background-color: blue; */
     margin-right: 25px;
 }
 
@@ -50,9 +48,17 @@
 }
 
 .Input_Container {
+    display: flex;
+    align-items: center;
     padding: 10px 15px;
     border: 1px solid #BDBDBD;
     border-radius: 12px;
+    transition: border-color .2s ease-in-out;
+}
+
+
+.Input_Container:focus {
+    border-color: #ada8a8;
 }
 
 .Input_Container i {

@@ -15,6 +15,7 @@ export default function Popup(props) {
 
     function handleCancel(e) {
         e.preventDefault();
+        setMessage('')
         data.setUsePopup(false);
     }
 
@@ -28,7 +29,10 @@ export default function Popup(props) {
 
     async function handleDelete(e){
         e.preventDefault()
-        if (Form.password == '') return;
+        if (Form.password == '') {
+            setMessage('Fill the required fields');
+            return
+        }
 
         const response = await fetch(
             `${process.env.NEXT_PUBLIC_API_URL}api/images/delete/${data.idImage}`, {
@@ -64,7 +68,10 @@ export default function Popup(props) {
         if (
             Form.label == '' ||
             Form.url == ''
-        ) {return};
+        ) {
+            setMessage('Fill the required fields');
+            return;
+        };
 
         const response = await fetch(
             `${process.env.NEXT_PUBLIC_API_URL}api/images/post/`, {
@@ -72,7 +79,7 @@ export default function Popup(props) {
                 body: JSON.stringify({
                     label: Form.label,
                     url: Form.url,
-                    author: "1"
+                    author: data.userData.id
                 }),
                 headers: {
                     "Authorization": `Token ${data.userData.token}`,
@@ -84,7 +91,6 @@ export default function Popup(props) {
             .then(response => response)
             .catch(err => err)
 
-        console.log(response)
         if (!response.uploaded_on) {
             setMessage('There was a problem')
             return
@@ -117,6 +123,7 @@ export default function Popup(props) {
                                 type='text'
                                 placeholder='Set your label here'
                                 name='label'
+                                value={Form.label}
                             />
                             <label htmlFor='url'>
                                 Photo URL
@@ -126,6 +133,7 @@ export default function Popup(props) {
                                 type='text'
                                 name='url'
                                 placeholder='Set the url here'
+                                value={Form.url}
                             />
                         </>
                     )
@@ -141,6 +149,7 @@ export default function Popup(props) {
                                     type='password'
                                     placeholder='Your password'
                                     name='password'
+                                    value={Form.password}
                                 />
                             </>
                     )

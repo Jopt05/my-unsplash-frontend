@@ -10,11 +10,15 @@ function MyApp({ Component, pageProps }) {
     username: ''
   })
 
+  const [filter, setFilter] = useState('')
+
   return (
     <AppContext.Provider
       value={{
         userData,
-        setUserData
+        setUserData,
+        filter,
+        setFilter
       }}
     >
       <Component {...pageProps} />

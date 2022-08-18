@@ -1,6 +1,9 @@
 import styles from './Header.module.css'
+import { useContext } from 'react';
+import AppContext from '../appcontext';
 
 export default function Header(props) {
+    const { filter, setFilter } = useContext(AppContext)
 
     const { data } = props;
 
@@ -26,6 +29,8 @@ export default function Header(props) {
                 <i className='bx bx-search-alt-2'></i>
                 <input
                     type='text'
+                    value={filter}
+                    onChange={ ((e) => setFilter(e.target.value)) }
                 />
             </div>
 
