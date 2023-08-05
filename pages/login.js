@@ -18,6 +18,8 @@ export default function Login() {
         password2: ''
     })
 
+    const [isLoading, setIsLoading] = useState(false);
+
     function handleChange(e) {
         const { target } = e;
         setForm({
@@ -55,6 +57,7 @@ export default function Login() {
     }
 
     async function handleLogin(e) {
+        setIsLoading(true);
         e.preventDefault();
         const hasError = checkEmptyFields(['email', 'password'])
         if( !hasError ) return;
@@ -72,6 +75,7 @@ export default function Login() {
         )
             .then(response => response.json())
             .then((r) => {
+                setIsLoading(false);
                 return r;
             })
             .catch(err => err)
@@ -210,6 +214,9 @@ export default function Login() {
                             </button>
                         )
                     }
+                </div>
+                <div className={`${styles.Loading_Container} ${isLoading && styles.Loading_Container_Active}`}>
+                    <img src='/loader.svg'></img>
                 </div>
             </form>
         </div>

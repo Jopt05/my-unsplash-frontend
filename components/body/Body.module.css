@@ -96,3 +96,14 @@
 .Image_Container:hover .Overlay {
     opacity: .2;
 }
+
+.Loader_div {
+    display: flex;
+    justify-content: center;
+}
+
+.Placeholder {
+    display: flex;
+    text-align: center;
+    font-size: 24px;
+}

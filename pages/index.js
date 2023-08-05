@@ -12,6 +12,7 @@ export default function Home() {
 
   const [usePopup, setUsePopup] = useState(false);
   const [popUpAction, setpopUpAction] = useState('none');
+  const [isLoading, setIsLoading] = useState(false);
   const [images, setImages] = useState([]);
   const [idImage, setidImage] = useState([]);
 
@@ -33,6 +34,8 @@ export default function Home() {
       Router.replace('/login');
       return
     }
+
+    setIsLoading(true);
     fetch(
       `${process.env.NEXT_PUBLIC_API_URL}api/images/${userData.id}`, {
         headers: {
@@ -42,7 +45,8 @@ export default function Home() {
     )
       .then(response => response.json())
       .then(response => {
-        setImages(response)
+        setImages(response);
+        setIsLoading(false);
       })
       .catch(err => err)
   }, [usePopup, userData])
@@ -73,7 +77,8 @@ export default function Home() {
           setUsePopup,
           setpopUpAction,
           images,
-          setidImage
+          setidImage,
+          isLoading
         }}
       />
       <Popup 

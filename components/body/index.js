@@ -3,11 +3,9 @@ import { useContext, useEffect, useState } from 'react';
 import AppContext from '../appcontext';
 
 export default function Body(props) {
-    const { filter } = useContext(AppContext)
+    const { filter } = useContext(AppContext);
 
-    const [loading, setLoading] = useState(true);
-
-    const { data } = props;
+    const { data, isLoading } = props;
 
     useEffect(() => {
         console.log(data.images)
@@ -22,7 +20,12 @@ export default function Body(props) {
     return (
         <main className={`${styles.Body} ${ data.images.length < 1 ? styles.Body_Empty : '' }`}>
             {
-                data.images.length > 0 
+                isLoading == true && <div className={styles.Loader_div}>
+                    <img src='/loader.svg'></img>
+                </div>
+            }
+            {
+                (isLoading == false && data.images.length > 0) 
                     ? data.images.map((item,index) => (
                         <div
                             className={`${styles.Image_Container} ${ item.label.toLowerCase().includes( filter.toLowerCase() ) ? '' : styles.Image_Container_Hidden }`}
@@ -45,9 +48,10 @@ export default function Body(props) {
                                     {item.label}
                                 </p>
                             </div>
-                        </div>
-                    ))
-                    : <h1>No images to be shown</h1>
+                        </div>))
+                    : <div className={styles.Placeholder}>
+                        <p>No tienes imágenes</p>
+                    </div>
             }
         </main>
     )

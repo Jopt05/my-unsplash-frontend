@@ -81,6 +81,18 @@
 .Form button:hover {
     background-color: #329258;
 }
+
+.Loading_Container {
+    display: flex;
+    height: 0px;
+    justify-content: center;
+    margin-top: 35px;
+    transition: height .2s ease-in-out;
+}
+
+.Loading_Container_Active {
+    height: 50px;
+}
   
 @media only screen and (max-width: 500px) {
     .container {
